@@ -1,0 +1,40 @@
+span {
+  background-color: red;
+  color: blue;
+}
+
+.a {
+    background-color: aqua;
+    color: brown;
+}
+
+h2 {
+    background-color: green;
+    color: white;
+  }
+
+
+#a1 {
+    background-color: yellow;
+    color: black;
+}
+
+#a2 {
+    display: block;
+    background-color: chartreuse;
+    color: dimgrey;
+    border: 20px solid black;
+    border-radius: 5px;
+    margin: 10px 10px 10px 100px;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    
+}
+
+#a3 {
+    background-color: rgb(244, 6, 176);
+    color: cornsilk;
+    
+}
