@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login_Registration from</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login">
+        <span>Login</span>
+        <form>
+          <div class="feilds">
+            <input
+              type="email"
+              name="usrnme"
+              id="usrname"
+              placeholder="Enter your email"
+            />
+            <input
+              type="password"
+              name="passwrd"
+              id="passwrd"
+              placeholder="Confrim a password"
+            />
+          </div>
+          <div class="actionItems">
+            <div class="confirmation">
+              <input type="checkbox" name="remberme" id="remberme" />
+              <span>Remember Me</span>
+            </div>
+            <div class="forgetpss">
+              <a href="#forgetpassword">Froget Passsword ?</a>
+            </div>
+          </div>
+
+          <div class="sbmt">
+            <button type="submit" > Login </button>
+          </div>
+        </form>
+        <span id="ref"
+          >Don't have account ? <a href="#signup">Signup now</a></span
+        >
+      </div>
+
+      <div class="reg">
+        <span>Registration</span>
+        <form>
+          <div class="feilds">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter your name"
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+            />
+            <input
+              type="password"
+              name="crpass"
+              id="crpass"
+              placeholder="Create Password"
+            />
+            <input
+              type="password"
+              name="cfpass"
+              id="cfpass"
+              placeholder="Confirm Password"
+            />
+          </div>
+          <div class="actionItems">
+            <div class="confiramtion">
+              <input type="checkbox" name="t&c" id="t&c" />
+              <span>I accept all terms & conditions</span>
+            </div>
+          </div>
+          <div class="sbmt">
+            <button type="submit">Register Now</button>
+          </div>
+        </form>
+        <span id="ref"
+          >Allready have an account? <a href="#login">Login Now</a></span
+        >
+      </div>
+    </div>
+  </body>
+</html>
