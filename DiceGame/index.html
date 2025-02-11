@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dice Game</h1>
+
+      <div class="board">
+        <div class="player1">
+          <label>Player 1</label>
+          <img src="" alt="Dice Image 1" class="diceImage" />
+          <button class="rolldiceBtn">Roll dice</button>
+        </div>
+
+        <div class="player2">
+          <label>Player 2</label>
+          <img src="" alt="Dice Image 2" class="diceImage" />
+          <button class="rolldiceBtn">Roll dice</button>
+        </div>
+      </div>
+      <div class="scoreboard">
+        <label>Score</label>
+        <div class="scoretable">
+          <table>
+            <tr>
+              <th>Player1</th>
+              <th>Player2</th>
+            </tr>
+            <tr>
+              <td><label for="Score1">&#128513;0</label></td>
+              <td><label for="Score2">0</label></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="controller">
+        <input type="text" name="" id="" class="nameIP" />
+        <input type="text" name="" id="" class="nameIP" />
+        <button class="btnCntrl" id="strt">
+          <i class="bi bi-flag-fill"></i>Start
+        </button>
+        <button class="btnCntrl" id="rset">
+          <i class="bi bi-arrow-clockwise"></i>Reset
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
