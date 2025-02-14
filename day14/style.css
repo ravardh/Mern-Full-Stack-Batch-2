@@ -1,0 +1,55 @@
+.container {
+  background-color: blue;
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+  display: flex;
+}
+
+.login,
+.reg {
+  background-color: aliceblue;
+  border-radius: 5px;
+  width: 40vh;
+  margin: auto;
+  padding: 15px;
+}
+
+.feilds {
+  padding: 5px;
+}
+
+.feilds input {
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  background: none;
+  display: grid;
+}
+
+.actionItems {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
+.sbmt,
+#ref {
+ display: flex;
+ justify-content: center;
+ margin: 8px;
+}
+
+.sbmt button{
+    display: block;
+    width:100%;
+    color: aliceblue;
+    background-color: blue;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
