@@ -27,17 +27,121 @@
     </header>
 
     <main>
-      <div class="container bg-light rounded mt-3">
+      <div class="container bg-light rounded mt-3 pb-3">
         <div class="players d-flex justify-content-around">
-          <div class="container d-grid m-5 p-3 justify-content-center border border-dark rounded shadow">
-            <label for="player1" class="display-6" id="pl1nmlb">Player 1</label>
-            <img src="" alt="DiceImg" id="p1dice">
-            <button type="button" class="btn btn-primary">Roll Dice</button>
+          <div
+            class="container d-grid m-5 p-3 justify-content-center border border-dark rounded shadow gap-4"
+          >
+            <label for="player1" class="display-6" id="p1nmlb">Player 1</label>
+            <img
+              src="./images/6.png"
+              alt="DiceImg"
+              id="p1dice"
+              width="100px"
+              height="100px"
+            />
+            <button type="button" class="btn btn-primary" id="rolldice1" disabled>Roll Dice</button>
           </div>
-          <div class="container d-grid m-5 p-3 justify-content-center border border-dark rounded shadow">
-            <label for="player2" class="display-6" id="pl2nmlb">Player 2</label>
-            <img src="" alt="DiceImg" id="p2dice">
-            <button type="button" class="btn btn-primary">Roll Dice</button>
+          <div
+            class="container d-grid m-5 p-3 justify-content-center border border-dark rounded shadow gap-4"
+          >
+            <label for="player2" class="display-6" id="p2nmlb">Player 2</label>
+            <img
+              src="./images/6.png"
+              alt="DiceImg"
+              id="p2dice"
+              width="100px"
+              height="100px"
+            />
+            <button type="button" class="btn btn-primary" id="rolldice2" disabled>Roll Dice</button>
+          </div>
+        </div>
+
+        <div class="scores">
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 text-center">
+              <label for="Score_title" class="fs-2 fw-bold">Score Broard</label>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3 text-center fs-4">
+              <label for="p1Name" id="p1sclb">Player 1</label>
+            </div>
+            <div class="col-3 text-center fs-4">
+              <label for="p2Name" id="p2sclb">Player 2</label>
+              <div class="col-3"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3 text-center fs-3">
+              <label for="p1Name" id="p1sc">0</label>
+            </div>
+            <div class="col-3 text-center fs-3">
+              <label for="p2Name" id="p2sc">0</label>
+              <div class="col-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container m-3 d-flex justify-content-center gap-5">
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#NameIP"
+            id="start"
+          >
+            Start Game
+          </button>
+          <button type="button" class="btn btn-danger" id="restart" onclick="restart()" disabled>Restart Game</button>
+        </div>
+
+        <div class="modal fade" id="NameIP" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="nameModalLabel">
+                  Add you Name to Start the Game
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body d-grid gap-3">
+                <input
+                  type="text"
+                  name="p1"
+                  id="p1"
+                  placeholder="Player 1 Name"
+                  class="form-control"
+                />
+                <input
+                  type="text"
+                  name="p2"
+                  id="p2"
+                  placeholder="Player 2 Name"
+                  class="form-control"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="start()"
+                  data-bs-dismiss="modal"
+                >
+                  Start Game
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -48,5 +152,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <script src="script.js"></script>
   </body>
 </html>
