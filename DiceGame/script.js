@@ -39,7 +39,6 @@ function switchPlayer(chance) {
   }
 }
 
-
 function p1Play() {
   let dice = Math.floor(Math.random() * 6 + 1);
   s1 = Number(document.getElementById("p1sc").innerText);
@@ -74,11 +73,17 @@ function p1Play() {
     }
   }
 
-  if (dice === 6) {
+  s1 = s1 + dice;
+
+  if (dice === 6 || s1 > 50) {
+    s1 = s1 - dice;
     switchPlayer(2);
   } else {
-    s1 = s1 + dice;
     document.getElementById("p1sc").innerText = s1;
+    if (s1 === 50) {
+      
+      alert("PLayer 1 Winnner !!! ", );
+    }
   }
 }
 
@@ -116,11 +121,15 @@ function p2Play() {
     }
   }
 
-  if (dice === 6) {
+  s2 = s2 + dice;
+
+  if (dice === 6 || s2 > 50) {
+    s2 = s2 - dice;
     switchPlayer(1);
   } else {
-    s2 = s2 + dice;
     document.getElementById("p2sc").innerText = s2;
+    if (s2 === 50) {
+      alert("Player 2 Winnner !!! ");
+    }
   }
 }
-
