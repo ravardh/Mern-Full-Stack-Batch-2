@@ -33,27 +33,49 @@
             class="container d-grid m-5 p-3 justify-content-center border border-dark rounded shadow gap-4"
           >
             <label for="player1" class="display-6" id="p1nmlb">Player 1</label>
-            <img
-              src="./images/6.png"
-              alt="DiceImg"
-              id="p1dice"
-              width="100px"
-              height="100px"
-            />
-            <button type="button" class="btn btn-primary" id="rolldice1" disabled>Roll Dice</button>
+            <div class="text-center">
+              <img
+                src="./images/6.png"
+                alt="DiceImg"
+                id="p1dice"
+                width="100px"
+                height="100px"
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="rolldice1"
+              onclick="p1Play()"
+              disabled
+            >
+              Roll Dice
+            </button>
           </div>
           <div
             class="container d-grid m-5 p-3 justify-content-center border border-dark rounded shadow gap-4"
           >
             <label for="player2" class="display-6" id="p2nmlb">Player 2</label>
-            <img
-              src="./images/6.png"
-              alt="DiceImg"
-              id="p2dice"
-              width="100px"
-              height="100px"
-            />
-            <button type="button" class="btn btn-primary" id="rolldice2" disabled>Roll Dice</button>
+            <div class="text-center">
+              <img
+                src="./images/6.png"
+                alt="DiceImg"
+                id="p2dice"
+                width="100px"
+                height="100px"
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="rolldice2"
+              onclick="p2Play()"
+              disabled
+            >
+              Roll Dice
+            </button>
           </div>
         </div>
 
@@ -98,7 +120,15 @@
           >
             Start Game
           </button>
-          <button type="button" class="btn btn-danger" id="restart" onclick="restart()" disabled>Restart Game</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            id="restart"
+            onclick="restart()"
+            disabled
+          >
+            Restart Game
+          </button>
         </div>
 
         <div class="modal fade" id="NameIP" tabindex="-1" aria-hidden="true">
