@@ -1,12 +1,13 @@
 let s1 = 0,
-  s2 = 0;
-
-let sb2 = Number(document.getElementById("p2sc").innerText);
+  s2 = 0,
+  p1,
+  p2;
 
 function start() {
-  const p1 = document.getElementById("p1").value.trim();
-  const p2 = document.getElementById("p2").value.trim();
+  p1 = document.getElementById("p1").value.trim();
+  p2 = document.getElementById("p2").value.trim();
 
+  console.log(p1, p2);
   if (p1 === "" || p2 === "") {
     alert("Please add the Player Name");
     location.reload();
@@ -81,8 +82,9 @@ function p1Play() {
   } else {
     document.getElementById("p1sc").innerText = s1;
     if (s1 === 50) {
-      
-      alert("PLayer 1 Winnner !!! ", );
+      setTimeout(() => {
+        alert("Winnner !!! " + p1);
+      }, 500);
     }
   }
 }
@@ -129,7 +131,9 @@ function p2Play() {
   } else {
     document.getElementById("p2sc").innerText = s2;
     if (s2 === 50) {
-      alert("Player 2 Winnner !!! ");
+      setTimeout(() => {
+        alert("Winnner !!! " + p2);
+      }, 500);
     }
   }
 }
