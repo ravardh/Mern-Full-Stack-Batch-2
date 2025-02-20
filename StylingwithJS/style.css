@@ -1,0 +1,53 @@
+#gola {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  padding: 50px;
+  text-align: center;
+}
+
+#red {
+  background-color: red;
+  color: aliceblue;
+}
+
+#green {
+  background-color: green;
+  color: aliceblue;
+}
+
+#blue {
+  background-color: blue;
+  color: aliceblue;
+}
+
+
+
+.red{
+    background-color: red;
+}
+.yellow{
+  background-color: yellow;
+}
+.green{
+    background-color: green;
+}
+
+.blue{
+    background-color: blue;
+}
+
+
+
+.golas{
+    display: flex;
+}
+.chotagola{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 20px;
+}
