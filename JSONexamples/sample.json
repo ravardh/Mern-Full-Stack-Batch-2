@@ -1,0 +1,46 @@
+{
+    "4": {
+        "Dinesh": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "M"
+        },
+        "Abhishek": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "M"
+        },
+        "divyansh": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "M"
+        },
+        "rashika": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "F"
+        }
+    },
+    "3": {
+        "Dinesh": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "M"
+        },
+        "Abhishek": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "M"
+        },
+        "divyansh": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "M"
+        },
+        "rashika": {
+            "age": 22,
+            "CGPA": 7.5,
+            "gender": "F"
+        }
+    }
+}
