@@ -1,9 +1,17 @@
-const a = Number(document.getElementById("age").innerText);
+function addElement() {
+  const ele = document.createElement("span");
 
-const b = document.getElementById("eleg");
+  ele.innerText = "I am new Span";
 
-if (a >= 18) {
-  b.innerText="you are elegible to Vote";
-} else {
-   b.innerText="you are not elegible to Vote";
+  const parent = document.querySelector("body");
+
+  parent.appendChild(ele);
+}
+
+function removeElement() {
+  const ele = document.querySelectorAll("span");
+
+  console.log(ele)
+
+  ele[0].remove();
 }
