@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center">Student Registration Form</h2>
+        <div class="container-fluid d-flex border rounded shadow p-3">
+          <div class="container">
+            <h4>Personal Information</h4>
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullName"  />
+              <span id="nameError" class="errorSpan"></span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email"  />
+              <span id="emailError" class="errorSpan"></span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mobile Number</label>
+              <input type="text" class="form-control" id="phone"  />
+              <span id="mobileError" class="errorSpan"></span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="dob"  />
+            </div>
+
+            <h4>Academic Details</h4>
+            <div class="mb-3">
+              <label class="form-label">Highest Completed Qualification</label>
+              <select class="form-control" id="edu" >
+                <option value="" selected>Select</option>
+                <option value="10th">10th</option>
+                <option value="12th">12th</option>
+                <option value="graduate">Graduate</option>
+                <option value="postgraduate">Postgraduate</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Percentage/Grade</label>
+              <input type="text" class="form-control" id="mrks"  />
+            </div>
+
+            <h4>Course Information</h4>
+            <div class="mb-3">
+              <label class="form-label">Preferred Course</label>
+              <select class="form-control" >
+                <option value="">Select</option>
+                <option value="cr-1">IIT-JEE</option>
+                <option value="cr-2">NEET</option>
+                <option value="cr-3">Banking Exams</option>
+                <option value="cr-4">UPSC</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Batch Timing Preference</label>
+              <div class="grid-system" id="shiftArea">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="batchPref"
+                    type="checkbox"
+                    value="Morning"
+                    id="morning"
+                  />
+                  <label class="form-check-label" for="morning">Morning</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="batchPref"
+                    type="checkbox"
+                    value="Afternoon"
+                    id="afternoon"
+                  />
+                  <label class="form-check-label" for="afternoon"
+                    >Afternoon</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="batchPref"
+                    type="checkbox"
+                    value="Evening"
+                    id="evening"
+                  />
+                  <label class="form-check-label" for="evening">Evening</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="batchPref"
+                    type="checkbox"
+                    value="Weekend"
+                    id="weekend"
+                  />
+                  <label class="form-check-label" for="weekend">Weekend</label>
+                </div>
+               
+              </div>
+              <span id="shiftError" class="errorSpan"></span>
+            </div>
+          </div>
+          <div class="container">
+            <h4>Address</h4>
+            <div class="mb-3">
+              <label class="form-label">Residential Address</label>
+              <textarea class="form-control" id="R_add" ></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">City</label>
+              <input type="text" class="form-control" id="city"  />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Pin Code</label>
+              <input type="text" class="form-control" id="Pin"  />
+            </div>
+
+            <h4>Guardian Details</h4>
+            <div class="mb-3">
+              <label class="form-label">Guardian’s Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="G_fullName"
+                
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Guardian’s Contact Number</label>
+              <input type="text" class="form-control" id="G_phone"  />
+            </div>
+
+            <h4>Additional Information</h4>
+            <div class="mb-3">
+              <label class="form-label">How did you hear about us?</label>
+              <select class="form-control" id="ref" >
+                <option value="">Select</option>
+                <option>Friends</option>
+                <option>Online Ad</option>
+                <option>Newspaper</option>
+                <option>Social Media</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Special Requirements (Optional)</label>
+              <textarea class="form-control" id="comments"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="sbmt_btn">
+              Submit
+            </button>
+          </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -10,6 +10,22 @@ function submitForm() {
   const ph = document.getElementById("phone").value.trim();
   const dob = document.getElementById("dob").value.trim();
 
+  const edu = document.getElementById("edu").value;
+
+  const shift = [];
+
+  document
+    .querySelectorAll("input[name='batchPref']:checked")
+    .forEach((element) => {
+      shift.push(element.value);
+    });
+
+  //reset the error
+  resetError();
+
+  console.log(shift);
+
+  console.log(edu);
   if (fn.length < 3) {
     document.getElementById("fullName").classList.add("error");
     document.getElementById("nameError").innerText =
@@ -31,5 +47,27 @@ function submitForm() {
     document.getElementById("emailError").innerText =
       "Please enter a Valid Email address ";
   }
+
+  if (shift.length <= 0) {
+    document.getElementById("shiftArea").classList.add("error");
+    document.getElementById("shiftError").innerText =
+      "Please at least 1 shift ";
+  }
+
+
+  if(!edu){
+    document.getElementById("edu").classList.add("error");
+  }
   console.log(fn, em, ph, dob);
+}
+
+function resetError() {
+  document.querySelectorAll("span").forEach((element) => {
+    element.innerText = "";
+  });
+ 
+  document.querySelectorAll("input, select, textarea, #shiftArea").forEach((element)=>{
+    element.classList.remove("error")
+  })
+
 }
