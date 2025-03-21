@@ -1,0 +1,51 @@
+.div1{
+    width: 500px;
+    height: 300px;
+    background-color: aqua;
+}
+
+.div1:hover{
+    background-color: blueviolet;
+    transition: background-color 5s;
+}
+
+
+.div2{
+    width:300px;
+    height: 50px;
+    border: 1px solid #000;
+    background-color: burlywood;
+    margin: 20px;
+}
+
+.div2:hover{
+    margin:  0 0 0 -50px;
+    transition: margin 3s linear 4s;
+
+}
+
+button{
+    margin: 5px;
+
+}
+
+.masterdiv{
+    width: 150px;
+    height: 50px;
+    border: 1px solid #000;
+    overflow: hidden;
+}
+
+.div3{
+    width: 150px;
+    height: 50px;
+    background-color: darkturquoise;
+    margin: 0;
+    transition: margin 1s linear 0.2s;
+}
+
+
+.move{
+    margin: 0 0 0 150px;
+    transition: margin 1s linear 0.2s;
+}
