@@ -1,0 +1,39 @@
+.a {
+  margin: 100px 0 0 500px;
+  position: relative;
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+.b {
+  color: blue;
+  border: 1px solid red;
+}
+
+.c {
+  width: 200px;
+  height: auto;
+  padding-top: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  display: none;
+  opacity: 50%;
+}
+
+.b:hover + .c {
+  display: block;
+}
+
+
+.c:hover {
+    display: block;
+  }
+
+
+.c1{
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: aqua;
+}

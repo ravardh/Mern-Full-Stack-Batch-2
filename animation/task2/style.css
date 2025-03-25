@@ -38,7 +38,7 @@
   width: 100px;
   height: 100px;
   background-color: yellow;
-  animation: kushik 0.1s linear 10;
+  animation: kushik 5s linear 10;
 }
 
 @keyframes kushik {

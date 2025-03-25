@@ -83,7 +83,9 @@ function p1Play() {
     document.getElementById("p1sc").innerText = s1;
     if (s1 === 50) {
       setTimeout(() => {
-        alert("Winnner !!! " + p1);
+        if(confirm("Winnner !!! " + p1)){
+          location.reload()
+        };
       }, 500);
     }
   }
@@ -132,7 +134,9 @@ function p2Play() {
     document.getElementById("p2sc").innerText = s2;
     if (s2 === 50) {
       setTimeout(() => {
-        alert("Winnner !!! " + p2);
+        if(confirm("Winnner !!! " + p2)){
+          location.reload()
+        };
       }, 500);
     }
   }
