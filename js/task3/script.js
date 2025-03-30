@@ -88,3 +88,15 @@ async function fetchproducts2(){
 
     productContainer.appendChild(row);
 }
+
+
+
+
+`https://api.openweathermap.org/data/2.5/weather?lat=23.2584857&lon=77.401989&appid=1cefe43006e662107c8d0454bde6852c
+`
+"lat": 23.2584857,
+"lon": 77.401989,
+
+
+`http://api.openweathermap.org/geo/1.0/direct?q={city name}&limit=1&appid=1cefe43006e662107c8d0454bde6852c
+`
