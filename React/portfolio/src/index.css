@@ -1,0 +1,21 @@
+#sidebar{
+    width: 20%;
+    height: 83vh;
+}
+
+#myPicDiv{
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    border-width: .5rem;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+#mypic{
+    width: 200px;
+    height: 200px;
+    object-fit:fit; 
+    border-radius: 50%;
+    margin: 5%;
+}
