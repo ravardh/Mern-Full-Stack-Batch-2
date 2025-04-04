@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const BasicForm = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +21,11 @@ const BasicForm = () => {
     setFormData((prev) => ({...prev,[name]: value,}));
   };
 
+
+  useEffect(() => {
+      console.log("I am function 12");
+    },[formData.Name]);
+  
   return (
     <>
       <div className="conatiner w-50 mx-auto my-5 p-4 rounded bg-light">

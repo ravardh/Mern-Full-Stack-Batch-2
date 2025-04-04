@@ -1,0 +1,33 @@
+{
+    "type": [
+        "Feature Film",
+        "Short Film",
+        "Documentary",
+        "Animated Film",
+        "TV Movie"
+    ],
+    "language": [
+        "English",
+        "Spanish",
+        "French",
+        "Hindi",
+        "Chinese",
+        "Japanese",
+        "Korean",
+        "German"
+    ],
+    "genre": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Science Fiction",
+        "Romance",
+        "Thriller",
+        "Fantasy",
+        "Mystery",
+        "Adventure",
+        "Crime",
+        "Animation"
+    ]
+}
