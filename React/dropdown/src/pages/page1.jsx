@@ -39,6 +39,11 @@ const Page1 = () => {
     console.log("Genre : ", selectedData.genre);
   };
 
+  const handelChange= (e)=>{
+    const {name,value}=e.target;
+    setSelectedData((prev)=>({...prev,[name]:value}));
+  }
+
   //   console.log(type, language, genre);
 
   return (
@@ -46,7 +51,12 @@ const Page1 = () => {
       <div className="container bg-primary p-5 mx-auto my-5 rounded">
         <form onSubmit={handelSubmit}>
           <div className="d-flex gap-4">
-            <select name="type" className="form-control">
+            <select
+              name="type"
+              className="form-control"
+              value={selectedData.type}
+              onChange={handelChange}
+            >
               <option value="">Select Movie Type </option>
               {loading
                 ? console.log("Loading Data")
@@ -58,7 +68,12 @@ const Page1 = () => {
                   ))}
             </select>
 
-            <select name="language" className="form-control">
+            <select
+              name="language"
+              className="form-control"
+              value={selectedData.language}
+              onChange={handelChange}
+            >
               <option value="">Select Movie Langauge </option>
               {loading
                 ? console.log("Loading Data")
@@ -70,7 +85,12 @@ const Page1 = () => {
                   ))}
             </select>
 
-            <select name="genre" className="form-control">
+            <select
+              name="genre"
+              className="form-control"
+              value={selectedData.genre}
+              onChange={handelChange}
+            >
               <option value="">Select Movie Genre </option>
               {loading
                 ? console.log("Loading Data")
