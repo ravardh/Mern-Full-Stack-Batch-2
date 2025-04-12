@@ -4,11 +4,14 @@ import {
   loginUser,
   logoutUser,
   resetUser,
+  signupUser,
 } from "../controller/auth.controller.js";
 
 loginUser;
 
 const router = express.Router();
+
+router.post("/signup",signupUser)
 
 router.post("/login", loginUser);
 
