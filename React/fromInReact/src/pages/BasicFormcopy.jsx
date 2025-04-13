@@ -10,10 +10,12 @@ const BasicForm = () => {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log("Name: ", formData.Name);
-    console.log("Email: ", formData.Email);
-    console.log("Phone: ", formData.Phone);
-    console.log("Password: ", formData.Password);
+    console.log(formData);
+    
+    // console.log("Name: ", formData.Name);
+    // console.log("Email: ", formData.Email);
+    // console.log("Phone: ", formData.Phone);
+    // console.log("Password: ", formData.Password);
   };
 
   const handelChange = (e) => {
