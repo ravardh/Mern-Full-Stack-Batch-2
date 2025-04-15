@@ -49,3 +49,25 @@ export const login = async (req, res) => {
 export const logout = (req, res) => {
   res.json({ message: "User Logout Sucessfull" });
 };
+
+export const update = async (req, res) => {
+  try {
+    const { email, name, phone } = req.body;
+
+    const user = await User.find({ email });
+
+    if (!user[0]) {
+      throw new error("User not Found");
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      { _id: user[0]._id },
+      { name, phone },
+      { new: true }
+    );
+
+    res.json({ message: "User upodated Sucessfull", updatedUser });
+  } catch (e) {
+    console.log(e);
+  }
+};
