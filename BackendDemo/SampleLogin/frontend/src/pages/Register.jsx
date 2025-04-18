@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../config/api";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -24,10 +24,12 @@ const Register = () => {
     console.log(formData);
 
     try {
-      const response = await axios.post("http://localhost:4500/api/auth/signup", formData);
+      const response = await axios.post("/api/auth/signup", formData);
       console.log(response.data);
+      alert(response.data.message);
     } catch (e) {
       console.log("Uanble to fetch Data from Server");
+      alert(e.response.data.message);
     }
   };
 

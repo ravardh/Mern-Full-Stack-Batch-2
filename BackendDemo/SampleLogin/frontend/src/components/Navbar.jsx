@@ -11,13 +11,21 @@ const Navbar = () => {
           <span className="text-black text-3xl">Sample Login Website</span>
         </Link>
 
-        <div>
+        <div className="flex gap-3">
           <Link to={"/login"}>
             <button
               type="button"
               className="bg-amber-600 border-amber-700 border-0 rounded-xl text-2xl px-4 py-2 text-white"
             >
               Login/Register
+            </button>
+          </Link>
+          <Link to={"/logout"}>
+            <button
+              type="button"
+              className="bg-amber-600 border-amber-700 border-0 rounded-xl text-2xl px-4 py-2 text-white"
+            >
+              Logout
             </button>
           </Link>
         </div>

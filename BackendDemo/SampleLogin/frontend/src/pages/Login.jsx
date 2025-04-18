@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "../config/api";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,9 +19,19 @@ const Login = () => {
     }));
   };
 
-  const handelSubmit = (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+
+    try {
+      const response = await axios.post("/api/auth/login", formData);
+      console.log(response.data);
+      alert(response.data.message);
+      navigate("/profile");
+    } catch (e) {
+      console.log("Uanble to fetch Data from Server");
+      alert(e.response.data.message);
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50">
@@ -43,8 +56,10 @@ const Login = () => {
             onChange={handleChange}
             required
           />
-          <button className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition"
-          onClick={handelSubmit}>
+          <button
+            className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition"
+            onClick={handelSubmit}
+          >
             Login
           </button>
         </form>
