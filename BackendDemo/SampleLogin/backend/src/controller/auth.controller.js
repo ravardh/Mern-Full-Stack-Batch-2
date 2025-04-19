@@ -5,11 +5,17 @@ import genToken from "../config/auth.js";
 export const signupUser = async (req, res, next) => {
   try {
     const { name, email, phone, password } = req.body;
+    let { profilePhoto } = req.body;
 
     if (!name || !email || !phone || !password) {
       let error = new Error("All Feilds Required");
       error.StatusCode = 400;
       next(error);
+    }
+
+    if (!profilePhoto) {
+      const Nc = name.charAt(0);
+      profilePhoto = `https://placehold.co/400X400?text=${Nc}`;
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,6 +33,7 @@ export const signupUser = async (req, res, next) => {
       email,
       phone,
       password: hashedPassword,
+      profilePhoto,
     });
 
     res.status(201).json({ message: ` Welcome ${newUser.name} !!! ` });
@@ -35,7 +42,7 @@ export const signupUser = async (req, res, next) => {
   }
 };
 
-export const loginUser = async (req, res) => {
+export const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 

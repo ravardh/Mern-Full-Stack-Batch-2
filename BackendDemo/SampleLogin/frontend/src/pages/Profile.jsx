@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "../config/api";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [userdata, setUserdata] = useState();
+
+  const navigate = useNavigate();
 
   const getUserData = async () => {
     try {
@@ -28,11 +31,26 @@ const Profile = () => {
             <span>User Not Found</span>
           ) : (
             <div className="flex flex-col items-center gap-5">
+              <div className="border w-[15rem] h-[15rem] rounded-full overflow-hidden">
+                <img
+                  src={userdata.profilePhoto}
+                  alt="ProfilePic"
+                  className="object-cover"
+                />
+              </div>
               <span>Name: {userdata.name}</span>
               <span>Email: {userdata.email}</span>
               <span>Phone: {userdata.phone}</span>
             </div>
           )}
+          <div className="text-center">
+            <button
+              className="rounded bg-green-500 text-white p-3 mt-8"
+              onClick={() => navigate("/update-profile")}
+            >
+              Update Profile
+            </button>
+          </div>
         </div>
       </div>
     </>
