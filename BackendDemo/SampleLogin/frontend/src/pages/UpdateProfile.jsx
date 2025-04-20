@@ -59,7 +59,7 @@ const UpdateProfile = () => {
                 onChange={(e) => {
                   const file = e.target.files[0];
                   if (file) {
-                    setPreview(URL.createObjectURL(file)); // creates a preview URL
+                    setPreview(URL.createObjectURL(file)); 
                   }
                 }}
               />
