@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const UpdateProfile = () => {
   const [userdata, setUserdata] = useState();
   const [preview, setPreview] = useState();
+  const [photo, setPhoto] = useState();
 
   const navigate = useNavigate();
 
@@ -21,10 +22,64 @@ const UpdateProfile = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({
+    setUserdata((prev) => ({
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handelPhotoChnage = (e) => {
+    const file = e.target.files[0];
+    setPhoto(file);
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const uploadPhoto = async () => {
+    //https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
+
+    const data = new FormData();
+
+    data.append("file", photo);
+    data.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+    data.append("folder", "sample-login");
+
+    try {
+      const resposne = await fetch(
+        `https://api.cloudinary.com/v1_1/${
+          import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+        }/image/upload`,
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      const result = await resposne.json();
+
+      setUserdata((prev) => ({
+        ...prev,
+        profilePhoto: result.secure_url,
+      }));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+
+    await uploadPhoto();
+
+    try {
+      const response = await axios.post("/api/auth/update", userdata);
+      console.log(response.data);
+      alert(response.data.message);
+    } catch (e) {
+      console.log("Uanble to fetch Data from Server");
+      alert(e.response.data.message);
+    }
   };
 
   useEffect(() => {
@@ -56,12 +111,7 @@ const UpdateProfile = () => {
                 type="file"
                 name="photo"
                 className="w-full p-3 border rounded mb-4"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    setPreview(URL.createObjectURL(file)); 
-                  }
-                }}
+                onChange={handelPhotoChnage}
               />
               <input
                 type="name"
@@ -86,7 +136,7 @@ const UpdateProfile = () => {
           <div className="flex gap-3 justify-center">
             <button
               className="rounded bg-green-500 text-white p-3 mt-8"
-              onClick={() => navigate("/update-profile")}
+              onClick={handelSubmit}
             >
               Update
             </button>

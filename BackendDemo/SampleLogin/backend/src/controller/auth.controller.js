@@ -87,3 +87,36 @@ export const getUser = (req, res) => {
 
   res.status(200).json(req.user);
 };
+
+export const updateUser = async (req, res, next) => {
+  try {
+    const { name, phone, profilePhoto } = req.body;
+    const user = req.user;
+
+    if (!name || !phone || !profilePhoto) {
+      let error = new Error("All Feilds Required");
+      error.StatusCode = 400;
+      next(error);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      user._id,
+      {
+        name,
+        phone,
+        profilePhoto,
+      },
+      { new: true }
+    );
+
+    if (!updateUser) {
+      let error = new Error("Update unsucessfull");
+      error.StatusCode = 404;
+      next(error);
+    }
+
+    res.status(200).json({ message: "Update Sucessfull" });
+  } catch (e) {
+    next(e);
+  }
+};
