@@ -37,16 +37,13 @@ const UpdateProfile = () => {
   };
 
   const uploadPhoto = async () => {
-    //https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
-
     const data = new FormData();
-
     data.append("file", photo);
     data.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
     data.append("folder", "sample-login");
-
+  
     try {
-      const resposne = await fetch(
+      const response = await fetch(
         `https://api.cloudinary.com/v1_1/${
           import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
         }/image/upload`,
@@ -55,32 +52,44 @@ const UpdateProfile = () => {
           body: data,
         }
       );
-
-      const result = await resposne.json();
-
-      setUserdata((prev) => ({
-        ...prev,
-        profilePhoto: result.secure_url,
-      }));
+  
+      const result = await response.json();
+      return result.secure_url;  
     } catch (e) {
-      console.log(e);
+      console.log("Photo upload failed:", e);
+      return null;
     }
   };
+  
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-
-    await uploadPhoto();
-
+  
+    let updatedPhotoURL = userdata.profilePhoto; // fallback to existing
+  
+    if (photo) {
+      const uploadedURL = await uploadPhoto();
+      if (uploadedURL) {
+        updatedPhotoURL = uploadedURL;
+      }
+    }
+  
+    const payload = {
+      ...userdata,
+      profilePhoto: updatedPhotoURL,
+    };
+  
     try {
-      const response = await axios.post("/api/auth/update", userdata);
+      const response = await axios.post("/api/auth/update", payload);
       console.log(response.data);
       alert(response.data.message);
+      navigate("/profile"); // optional redirect after success
     } catch (e) {
-      console.log("Uanble to fetch Data from Server");
-      alert(e.response.data.message);
+      console.log("Unable to update profile", e);
+      alert(e.response?.data?.message || "Something went wrong");
     }
   };
+  
 
   useEffect(() => {
     getUserData();

@@ -94,29 +94,26 @@ export const updateUser = async (req, res, next) => {
     const user = req.user;
 
     if (!name || !phone || !profilePhoto) {
-      let error = new Error("All Feilds Required");
-      error.StatusCode = 400;
-      next(error);
+      const error = new Error("All Fields Required");
+      error.statusCode = 400;
+      return next(error);
     }
 
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
-      {
-        name,
-        phone,
-        profilePhoto,
-      },
+      { name, phone, profilePhoto },
       { new: true }
     );
 
-    if (!updateUser) {
-      let error = new Error("Update unsucessfull");
-      error.StatusCode = 404;
-      next(error);
+    if (!updatedUser) {
+      const error = new Error("Update Unsuccessful");
+      error.statusCode = 404;
+      return next(error);
     }
 
-    res.status(200).json({ message: "Update Sucessfull" });
+    res.status(200).json({ message: "Update Successful", updatedUser });
   } catch (e) {
     next(e);
   }
 };
+
