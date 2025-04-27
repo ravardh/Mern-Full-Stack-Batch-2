@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "../config/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,13 +11,15 @@ const Register = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target;+
 
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
+
+  const navigate = useNavigate();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const Register = () => {
       const response = await axios.post("/api/auth/signup", formData);
       console.log(response.data);
       alert(response.data.message);
+      navigate("/login")
     } catch (e) {
       console.log("Uanble to fetch Data from Server");
       alert(e.response.data.message);

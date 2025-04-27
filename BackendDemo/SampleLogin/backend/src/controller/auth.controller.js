@@ -10,7 +10,7 @@ export const signupUser = async (req, res, next) => {
     if (!name || !email || !phone || !password) {
       let error = new Error("All Feilds Required");
       error.StatusCode = 400;
-      next(error);
+      return next(error);
     }
 
     if (!profilePhoto) {
@@ -25,7 +25,7 @@ export const signupUser = async (req, res, next) => {
     if (previousUser[0]) {
       let error = new Error("User already Exists");
       error.StatusCode = 409;
-      next(error);
+      return next(error);
     }
 
     const newUser = await User.create({
@@ -49,7 +49,7 @@ export const loginUser = async (req, res, next) => {
     if (!email || !password) {
       let error = new Error("All Feilds Required");
       error.StatusCode = 400;
-      next(error);
+      return next(error);
     }
 
     const user = await User.find({ email });
@@ -57,7 +57,7 @@ export const loginUser = async (req, res, next) => {
     if (!user[0]) {
       let error = new Error("Inavild Email/Password");
       error.StatusCode = 404;
-      next(error);
+      return next(error);
     }
 
     const verifyPassword = await bcrypt.compare(password, user[0].password);
@@ -65,7 +65,7 @@ export const loginUser = async (req, res, next) => {
     if (!verifyPassword) {
       let error = new Error("Inavild Email/Password");
       error.StatusCode = 404;
-      next(error);
+      return next(error);
     }
 
     const Token = genToken(user[0]._id, res);
