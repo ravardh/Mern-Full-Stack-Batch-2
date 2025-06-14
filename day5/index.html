@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignupFrom</title>
+  </head>
+  <body>
+    <h1>RICR Registration Form</h1>
+    <form>
+      <label for="name">Name : </label>
+      <input type="text" name="name" id="name" placeholder="Add your Name" />
+      <br />
+      <label for="age">Age : </label>
+      <input type="number" name="age" id="age" />
+      <br />
+      <label for="dob">DOB : </label>
+      <input type="date" name="dob" id="dob" />
+      <br />
+      <label for="email">Email : </label>
+      <input type="email" name="email" id="email" />
+      <br />
+      <label for="password">Password : </label>
+      <input type="password" name="password" id="password" />
+      <br />
+      <label for="gender">Gender : </label>
+      <input type="radio" name="gender" id="male" value="Male" /><span>Male</span>
+      <input type="radio" name="gender" id="female" value="Female" /><span
+        >Female</span
+      >
+      <input type="radio" name="gender" id="other" value="Others" /><span
+        >Others</span
+      >
+      <br />
+      <label for="doc">Document : </label>
+      <input type="checkbox" name="doc" id="Adharcrd" value="Aadhar card" /><span
+        >Aadhar card</span
+      >
+      <input type="checkbox" name="doc" id="dmc10" value="10th DMC" /><span
+        >10th DMC</span
+      >
+      <input type="checkbox" name="doc" id="dmc12" value="12th DMC" /><span
+        >12th DMC</span
+      >
+      <br />
+      <label for="course">Course : </label>
+      <select name="course" id="course">
+        <option value="">-- Select Course --</option>
+        <option value="Java + DSA + MERN">Java + DSA + MERN</option>
+        <option value="MERN">MERN</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Data Analytics">Data Analytics</option>
+      </select>
+      <br />
+      <label for="address">Address : </label>
+      <textarea name="address" id="address"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </form>
+  </body>
+</html>

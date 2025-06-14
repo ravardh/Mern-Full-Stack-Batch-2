@@ -1,0 +1,66 @@
+.container {
+  margin: 50px auto;
+  width: 150px;
+  height: 300px;
+}
+
+.cards {
+  width: 150px;
+  height: 300px;
+  border: 1px solid #000;
+  position: relative;
+  text-wrap: wrap;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.card-front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  position: absolute;
+  transform: rotateY(180deg);
+  color: red;
+  backface-visibility: hidden;
+}
+
+.cards:hover {
+  transform: rotate3d(180deg);
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.div {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  animation: kushik 5s linear 10;
+}
+
+@keyframes kushik {
+  0% {
+    left:0px;
+    background-color: yellow;
+  };
+  25% {
+    top:50px;
+    background-color: green;
+  }
+  50% {
+    right:50px;
+    background-color: blue;
+  }
+  75% {
+    bottom:50px;
+    
+    background-color: red;
+  }
+  100% {
+    bottom:50px;
+    background-color: orange;
+  }
+}

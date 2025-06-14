@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <div id="formMain">
+        <div class="label">
+          <label for="name">Name : </label>
+          </div>
+          <div class="inpt">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Add your Name"
+          />
+        </div>
+
+        <div class="label">
+          <label for="age">Age : </label>
+        </div>
+        <div class="inpt">
+          <input type="number" name="age" id="age" placeholder="Add your Age" />
+        </div>
+
+        <div class="label">
+          <label for="dob">DOB : </label>
+        </div>
+        <div class="inpt">
+          <input type="date" name="dob" id="dob" placeholder="Add your DOB" />
+        </div>
+
+        <div class="label">
+          <label for="email">Email : </label>
+        </div>
+        <div class="inpt">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Add your Email"
+          />
+        </div>
+
+        <div class="label">
+          <label for="password">Password : </label>
+        </div>
+        <div class="inpt">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Choose your Password"
+          />
+        </div>
+
+        <div class="label">
+          <label for="gender">Gender : </label>
+        </div>
+        <div class="inpt" id="gndr">
+          <input type="radio" name="gender" id="male" value="Male" /><span
+            >Male</span
+          >
+          <input type="radio" name="gender" id="female" value="Female" /><span
+            >Female</span
+          >
+          <input type="radio" name="gender" id="other" value="Others" /><span
+            >Others</span
+          >
+        </div>
+
+        <div class="label">
+          <label for="doc">Document : </label>
+        </div>
+        <div class="inpt">
+          <input
+            type="checkbox"
+            name="doc"
+            id="Adharcrd"
+            value="Aadhar card"
+          /><span>Aadhar card</span>
+          <input type="checkbox" name="doc" id="dmc10" value="10th DMC" /><span
+            >10th DMC</span
+          >
+          <input type="checkbox" name="doc" id="dmc12" value="12th DMC" /><span
+            >12th DMC</span
+          >
+        </div>
+
+        <div class="label">
+          <label for="course">Course : </label>
+        </div>
+        <div class="inpt">
+          <select name="course" id="course">
+            <option value="">-- Select Course --</option>
+            <option value="Java + DSA + MERN">Java + DSA + MERN</option>
+            <option value="MERN">MERN</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Data Analytics">Data Analytics</option>
+          </select>
+        </div>
+
+        <div class="label">
+          <label for="address">Address : </label>
+        </div>
+        <div class="inpt">
+          <textarea
+            name="address"
+            id="address"
+            placeholder="Add your Address"
+          ></textarea>
+        </div>
+
+        <div class="submit">
+          <input type="submit" value="Submit" />
+          <input type="reset" value="Reset" />
+        </div>
+      </div>
+    </form>
+
+
+    
+  </body>
+</html>

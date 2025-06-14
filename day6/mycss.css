@@ -1,0 +1,49 @@
+span {
+  background-color: red;
+  color: blue;
+}
+
+.a {
+    background-color: aqua;
+    color: brown;
+}
+
+h2 {
+    background-color: green;
+    color: white;
+  }
+
+
+#a1 {
+    background-color: yellow;
+    color: black;
+}
+
+#a2 {
+    display: block;
+    background-color: chartreuse;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px 10px 10px 100px;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    box-shadow: 5px 5px 10px grey;
+    text-shadow: 2px 2px 2px red;
+    font-family:cursive;
+    font-size: 25px;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+
+
+
+#a3 {
+    background-color: rgb(244, 6, 176);
+    color: cornsilk;
+    
+}
+

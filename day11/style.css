@@ -1,0 +1,37 @@
+.child {
+  border: 2px solid #000;
+  width: 30px;
+  height: 30px;
+  color: aliceblue;
+  
+}
+
+.child:nth-child(even) {
+  background-color: brown;
+}
+
+.child:nth-child(odd) {
+  background-color: cadetblue;
+}
+
+.sample {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  gap: 10px;
+  justify-content: space-around;
+}
+
+
+.text{
+    width: 500px;
+    overflow: hidden;
+}
+
+.text span{
+    text-wrap:nowrap;
+}
+
+.text span:hover{
+margin:0 -100%;
+transition: margin 20s linear;
+}

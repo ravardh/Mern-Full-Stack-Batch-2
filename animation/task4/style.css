@@ -1,0 +1,53 @@
+.card {
+  width: 300px;
+  height: 275px;
+  /* overflow: hidden; */
+  border: 2px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px auto;
+}
+
+.photo img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.details {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 200px;
+  height: 60px;
+  border: 1px solid #000;
+  margin: 20px auto 20px auto;
+}
+
+
+
+.card:hover{
+    height: 350px;
+    transition: height 0.5s linear;
+
+    .photo img{
+        transform: scale(1.1);
+        transition: transform 0.5s linear;
+    }
+    
+}

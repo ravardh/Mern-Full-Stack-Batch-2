@@ -1,0 +1,23 @@
+{
+  "name": "firstbackendcode",
+  "version": "1.0.0",
+  "description": "just for testing and learning purpose",
+  "type": "module",
+  "license": "ISC",
+  "author": "Raj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --env-file=.env index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

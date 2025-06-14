@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <form>
+      <table>
+        <tr>
+          <td><label for="name">Name :</label></td>
+          <td>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter your Name"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="age">Age:</label></td>
+          <td>
+            <input
+              type="number"
+              name="age"
+              id="age"
+              placeholder="Enter your Age"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="address">Address:</label></td>
+          <td><textarea name="address" id="address"></textarea></td>
+        </tr>
+
+        <tr>
+          <td><label for="gender">Gender</label></td>
+          <td>
+            <input type="radio" name="gender" id="Male" /> <span>Male</span>
+            <input type="radio" name="gender" id="Female" />
+            <span>Female</span>
+            <input type="radio" name="gender" id="Others" /> <span>Others</span>
+          </td>
+        </tr>
+
+        <tr>
+          <th colspan="2"><button>Submit</button></th>
+        </tr>
+      </table>
+    </form>
+
+   
+  </body>
+</html>

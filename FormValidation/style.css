@@ -1,0 +1,15 @@
+.grid-system{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+
+.error{
+    border: 1px solid red;
+    box-shadow: 2px 2px red;
+}
+
+.errorSpan{
+    color: red;
+    font-size: small;
+}

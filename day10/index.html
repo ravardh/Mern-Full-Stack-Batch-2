@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <h1 align="center">Registration From</h1>
+        <div class="feilds">
+          <div class="prd">
+            <h2 align="center">Presonal Details</h2>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="pdIN"
+              placeholder="Enter your Name"
+            />
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              class="pdIN"
+              placeholder="Enter your DOB"
+            />
+            <div class="pdIN" id="gndr">
+              <div id="divMale">
+                <input type="radio" name="gender" id="gndrM" value="Male" />
+                <span class="rdospn">Male</span>
+              </div>
+              <div id="divFemale">
+                <input type="radio" name="gender" id="gndrF" value="Female" />
+                <span class="rdospn">Female</span>
+              </div>
+              <div id="divOther">
+                <input type="radio" name="gender" id="gndrO" value="Others" />
+                <span class="rdospn">Others</span>
+              </div>
+            </div>
+            <textarea
+              name="address"
+              id="address"
+              class="pdIN"
+              placeholder="Address"
+            ></textarea>
+          </div>
+
+          <div class="pfd">
+            <h2 align="center">Professional Details</h2>
+            <select class="pfdIN">
+              <option value="">Select Highest Qualification</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Matriculation">Matriculation</option>
+              <option value="Primary">Primary</option>
+            </select>
+
+            <input
+              type="number"
+              name="marks"
+              id="mrks"
+              class="pfdIN"
+              placeholder="Enter your %age Marks"
+            />
+            <input
+              type="text"
+              name="skill"
+              id="skill"
+              class="pfdIN"
+              placeholder="Enter your Skill"
+            />
+            <div class="pfdIN" id="profLevel">
+              <span id="Plevel">Proficiency Level : </span>
+              <input
+                type="range"
+                name="level"
+                id="level"
+                min="0"
+                max="10"
+                value="2"
+              />
+            </div>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="pfdIN"
+              placeholder="Official Email"
+            />
+          </div>
+        </div>
+        <div class="C_S">
+            <div class="T_C">
+                <input type="checkbox" name="t_c" id="terms">
+                <span id="chspn">I agree to <a href="TermsAndConditions.pdf" target="_blank">Terms and Conditions</a>.</span>
+            </div>
+            <button type="submit" id="sbmt">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
