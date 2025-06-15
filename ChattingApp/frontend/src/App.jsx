@@ -8,11 +8,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
+import {Toaster} from "react-hot-toast";
 
 const App = () => {
   return (
     <>
       <Router>
+        <Toaster />
         <Navbar />
 
         <Routes>

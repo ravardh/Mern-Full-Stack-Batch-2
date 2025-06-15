@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import photo from "../assets/Steve-jobs.webp";
+import { Link } from "react-router-dom";
 
 const recentDummyChats = [
   {
@@ -76,13 +77,16 @@ const dummyChat = [
 const Chat = () => {
   const [chatID, setChatID] = useState(null);
   const [sendMessage, setSendMessage] = useState("");
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("user")) || null
+  );
 
   const handelSendMessage = () => {
     if (sendMessage.trim() === "") return; // Prevent sending empty messages
     console.log("Message sent:", sendMessage);
     setSendMessage(""); // Clear the input after sending
   };
-  
+
   const handelOpenChat = (id) => {
     console.log("Chat opened");
     setChatID(id); // Example chat ID, you can change this based on your logic
@@ -95,11 +99,13 @@ const Chat = () => {
           <div className="flex items-center justify-between mb-4 border-b pb-4">
             <h2 className="text-2xl font-bold text-[#1A3C5A] flex items-center gap-2">
               <img
-                src={photo}
+                src={user?.profilePicture || photo}
                 alt=""
                 className="w-10 h-10 object-cover rounded-full"
               />
-              <span>Steve Jobs</span>
+              <Link to={"/profile"} className="text-black hover:text-[#FF4081]/90">
+                {user?.name || "User Name"}
+              </Link>
             </h2>
             <button className="px-4 py-2 bg-[#FF4081] text-white rounded-lg hover:bg-[#FF4081]/90 transition-colors">
               New Chat

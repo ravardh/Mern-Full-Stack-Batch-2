@@ -1,12 +1,16 @@
 import react, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import backend from "../config/api";
+import toast from "react-hot-toast";
+import { useAuth } from "../context/authContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUser, setIsLogin } = useAuth();
 
   const [loginData, setLoginData] = useState({
-    Userid: "", //way of initializing the name components or input types present in the page
-    Password: "",
+    email: "", //way of initializing the name components or input types present in the page
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -15,9 +19,25 @@ const Login = () => {
     setLoginData((prev) => ({ ...prev, [name]: value })); //...prev thing
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); //stops that specific part of the page from reloading
     console.log("Form submitted:", loginData);
+
+    try {
+      const res = await backend.post("/auth/login", loginData);
+      console.log("Response:", res.data);
+      sessionStorage.setItem("user", JSON.stringify(res.data.user));
+      setUser(res.data.user);
+      setIsLogin(true);
+      toast.success(res.data.message);
+      navigate("/chat"); // Redirect to home page after successful login
+    } catch (error) {
+      console.error("Error during registration:", error);
+      toast.error(
+        error.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
+    }
   };
 
   return (
@@ -35,9 +55,9 @@ const Login = () => {
               User ID
             </label>
             <input
-              type="text"
-              name="Userid"
-              value={loginData.Userid}
+              type="email"
+              name="email"
+              value={loginData.email}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF4081] text-[#1A3C5A] bg-white"
               onChange={handleChange}
             />
@@ -51,8 +71,8 @@ const Login = () => {
             </label>
             <input
               type="password"
-              name="Password"
-              value={loginData.Password}
+              name="password"
+              value={loginData.password}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF4081] text-[#1A3C5A] bg-white"
               onChange={handleChange}
             />

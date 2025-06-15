@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import backend from "../config/api";
+import toast from "react-hot-toast";
 //import { state } from "../../public/dummy";
 
 const Register = () => {
@@ -18,9 +20,20 @@ const Register = () => {
     setRegisterData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
     console.log("Registered Data:", registerData);
+
+    try{
+      const res = await backend.post ("/auth/register", registerData);
+      console.log("Response:", res.data);
+      toast.success(res.data.message);
+    }catch (error) {
+      console.error("Error during registration:", error);
+      toast.error(
+        error.response?.data?.message || "Registration failed. Please try again."
+      );
+    }
   };
 
   return (

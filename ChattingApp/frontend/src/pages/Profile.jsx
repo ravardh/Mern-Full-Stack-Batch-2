@@ -3,20 +3,18 @@ import photo from "../assets/Steve-jobs.webp";
 import { useState } from "react";
 
 const Profile = () => {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-  });
+  const [data, setData] = useState(
+    JSON.parse(sessionStorage.getItem("user")) || {
+      name: "Steve Jobs",
+      email: "email@example.com",
+    }
+  );
 
   const handlePhotoChange = () => {
     // This function can be used to change the profile photo
     // For now, it just logs a message
     console.log("Change photo button clicked");
   };
-
-  useEffect(() => {
-    setData({ name: "Steve Jobs", email: "email@example.com" });
-  }, []);
 
   const handleChange = (e) => {
     //every time i am writing anything in the input the function is called and everything is stored
@@ -32,7 +30,7 @@ const Profile = () => {
           </h1>
           <div className="flex items-center justify-center">
             <img
-              src={photo}
+              src={data.profilePicture || photo}
               alt="profilepicture"
               className="w-50 h-50 object-cover border rounded-full"
             />
