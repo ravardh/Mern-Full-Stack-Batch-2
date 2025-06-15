@@ -75,7 +75,14 @@ const dummyChat = [
 
 const Chat = () => {
   const [chatID, setChatID] = useState(null);
+  const [sendMessage, setSendMessage] = useState("");
 
+  const handelSendMessage = () => {
+    if (sendMessage.trim() === "") return; // Prevent sending empty messages
+    console.log("Message sent:", sendMessage);
+    setSendMessage(""); // Clear the input after sending
+  };
+  
   const handelOpenChat = (id) => {
     console.log("Chat opened");
     setChatID(id); // Example chat ID, you can change this based on your logic
@@ -127,11 +134,11 @@ const Chat = () => {
         </div>
         <div className="w-3/4 h-full bg-green-200 p-4 flex flex-col">
           <div className="flex items-center gap-3 mb-4 border-b pb-4">
-             <img
-                src={photo}
-                alt=""
-                className="w-8 h-8 object-cover rounded-full"
-              />
+            <img
+              src={photo}
+              alt=""
+              className="w-8 h-8 object-cover rounded-full"
+            />
             <h2 className="text-2xl font-bold text-[#1A3C5A]">
               {recentDummyChats.find((chat) => chat.id === chatID)?.name ||
                 "Welcome to ChatApp"}
@@ -164,8 +171,15 @@ const Chat = () => {
                   type="text"
                   placeholder="Type your message..."
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF4081] text-[#1A3C5A] bg-white"
-                ></input>
-                <button className="px-4 py-2 bg-[#FF4081] text-white rounded-lg hover:bg-[#FF4081]/90 transition-colors">
+                  value={sendMessage}
+                  onChange={(event) => {
+                    setSendMessage(event.target.value);
+                  }}
+                />
+                <button
+                  className="px-4 py-2 bg-[#FF4081] text-white rounded-lg hover:bg-[#FF4081]/90 transition-colors"
+                  onClick={handelSendMessage}
+                >
                   Send Message
                 </button>
               </div>

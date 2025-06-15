@@ -7,7 +7,7 @@ const Register = () => {
   const [registerData, setRegisterData] = useState({
     fullName: "",
     email: "",
-    Password: "",
+    password: "",
     cfPassword: "",
   });
 
@@ -67,7 +67,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                name="Password"
+                name="password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF4081] text-[#1A3C5A] bg-white"
                 onChange={handleChange}
               ></input>
