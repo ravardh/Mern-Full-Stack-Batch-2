@@ -100,7 +100,7 @@ export const userRegister = async (req, res, next) => {
 export const userLogout = async (req, res, next) => {
   try {
     // Clear the token from the request (if using cookies, clear the cookie)
-    res.cookie("Token", "", {
+    res.cookie("token", "", {
       httpOnly: true,
       expires: new Date(0), // Set expiration to the past
     });

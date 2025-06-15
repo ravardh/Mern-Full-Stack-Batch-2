@@ -4,6 +4,7 @@ import cookieparser from "cookie-parser";
 import morgan from "morgan";
 import connectDB from "./src/config/db.js";
 import AuthRoutes from "./src/routes/authRoutes.js";
+import UserRoutes from "./src/routes/userRoutes.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cookieparser());
 app.use(morgan("dev"));
 
 app.use("/api/auth", AuthRoutes);
+app.use("/api/user", UserRoutes);
 
 app.get("/", (req, res) => {
   res.json({

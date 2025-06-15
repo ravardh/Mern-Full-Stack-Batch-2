@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import photo from "../assets/Steve-jobs.webp";
 import { Link } from "react-router-dom";
+import backend from "../config/api";
 
 const recentDummyChats = [
   {
@@ -81,6 +82,8 @@ const Chat = () => {
     JSON.parse(sessionStorage.getItem("user")) || null
   );
 
+  const [recentChats, setRecentChats] = useState(recentDummyChats);
+
   const handelSendMessage = () => {
     if (sendMessage.trim() === "") return; // Prevent sending empty messages
     console.log("Message sent:", sendMessage);
@@ -91,6 +94,20 @@ const Chat = () => {
     console.log("Chat opened");
     setChatID(id); // Example chat ID, you can change this based on your logic
   };
+
+  const fetchallRecentChats = async () => {
+    try {
+      const res = await backend.get("/user/getAllUsers"); // for now getting all users
+      setRecentChats(res.data.users);
+    } catch (error) {
+      console.error("Error fetching recent chats:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Simulate fetching user data from session storage
+    fetchallRecentChats();
+  }, []);
 
   return (
     <>
@@ -103,7 +120,10 @@ const Chat = () => {
                 alt=""
                 className="w-10 h-10 object-cover rounded-full"
               />
-              <Link to={"/profile"} className="text-black hover:text-[#FF4081]/90">
+              <Link
+                to={"/profile"}
+                className="text-black hover:text-[#FF4081]/90"
+              >
                 {user?.name || "User Name"}
               </Link>
             </h2>
@@ -114,30 +134,35 @@ const Chat = () => {
           <div className="">
             <h3 className="text-lg text-[#ff4081] font-bold">Recents Chats</h3>
           </div>
-          {recentDummyChats.map((chat) => (
+          {recentChats.map((chat) => (
             <div
               key={chat.id}
               className="relative flex items-center gap-2 p-2 hover:bg-[#FF4081]/10 rounded-lg cursor-pointer mb-2"
               onClick={() => handelOpenChat(chat.id)}
             >
               <img
-                src={photo}
+                src={chat.profilePicture || photo}
                 alt=""
                 className="w-8 h-8 object-cover rounded-full"
               />
               <div className="flex flex-col">
                 <span className="text-[#1A3C5A] font-semibold">
-                  {chat.name}
+                  {chat.fullName || chat.name || "Unknown User"}
                 </span>
-                <span className="text-gray-500 text-sm">
-                  {chat.lastMessage.length > 40
-                    ? chat.lastMessage.slice(0, 40) + "..."
-                    : chat.lastMessage}
-                </span>
+                {chat.lastMessage ? (
+                  <span className="text-gray-500 text-sm">
+                    {chat.lastMessage.length > 40
+                      ? chat.lastMessage.slice(0, 40) + "..."
+                      : chat.lastMessage}
+                  </span>
+                ) : (
+                  <span className="text-gray-500 text-sm"></span>
+                )}
               </div>
             </div>
           ))}
         </div>
+        {console.log("Chat ID:", chatID)}
         <div className="w-3/4 h-full bg-green-200 p-4 flex flex-col">
           <div className="flex items-center gap-3 mb-4 border-b pb-4">
             <img
