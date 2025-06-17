@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.get("/getUser", userProtect, userData);
 router.get("/getAllUsers", userProtect, getAllUsers);
-router.get("/getAllRecentUser", userProtect, getRecentUser);
-router.post("/send", userProtect, sendMessage);
-router.post("/receive", userProtect, recieveMessage);
+router.get("/getRecentUser/:id", userProtect, getRecentUser);
+router.post("/send/:id&:message", userProtect, sendMessage);
+router.post("/receive/:id", userProtect, recieveMessage);
 
 export default router;

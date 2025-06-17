@@ -1,8 +1,3 @@
-//   userData,
-//   getAllUsers,
-//   getRecentUser,
-//   sendMessage,
-//   recieveMessage,
 import Message from "../models/messageModel.js";
 import User from "../models/userModel.js";
 
@@ -26,7 +21,9 @@ export const userData = async (req, res, next) => {
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find({ _id: { $ne: req.user._id } }).select("-password");
+    const users = await User.find({ _id: { $ne: req.user._id } }).select(
+      "-password"
+    );
     res.status(200).json({
       message: "All users retrieved successfully",
       users,
@@ -37,12 +34,31 @@ export const getAllUsers = async (req, res, next) => {
   }
 };
 
-export const getRecentUser = async (req, res, next) => {};
+export const getRecentUser = async (req, res, next) => {
+  try {
+    const receiverId = req.params.id;
+
+    const recentUsers = await User.findById(receiverId);
+
+    res.status(200).json({
+      message: "Recent users retrieved successfully",
+      receiver: recentUsers,
+    });
+  } catch (error) {
+    error.statusCode = 500;
+    next(error);
+  }
+};
 
 export const sendMessage = async (req, res, next) => {
   try {
-    const { receiverId, message } = req.body;
+    const receiverId = req.params.id;
+    const message = req.params.message;
     const senderId = req.user._id;
+
+    console.log("Sender ID:", senderId);
+    console.log("Receiver ID:", receiverId);
+    console.log("Message:", message);
 
     if (!receiverId || !message) {
       return res
@@ -50,13 +66,12 @@ export const sendMessage = async (req, res, next) => {
         .json({ message: "Receiver ID and message are required" });
     }
 
-    const newMessage = new Message({
+    const newMessage = await Message.create({
       sender: senderId,
       receiver: receiverId,
       message,
+      timestamp: new Date(),
     });
-
-    await newMessage.save();
 
     res.status(201).json({
       message: "Message sent successfully",
@@ -70,19 +85,27 @@ export const sendMessage = async (req, res, next) => {
 
 export const recieveMessage = async (req, res, next) => {
   try {
-    const { senderId } = req.body;
-    const receiverId = req.user._id;
+    const receiverId = req.params.id;
+    const senderId = req.user._id;
 
     if (!senderId) {
-      return res.status(400).json({ message: "Sender ID is required" });
+      const error = new Error("Sender ID is required");
+      error.statusCode = 400;
+      return next(error);
+    }
+    if (!receiverId) {
+      const error = new Error("Receiver ID is required");
+      error.statusCode = 400;
+      return next(error);
     }
 
-    const messages = await Message.find({
-      $or: [
-        { sender: senderId, receiver: receiverId },
-        { sender: receiverId, receiver: senderId },
-      ],
-    }).sort({ createdAt });
+    const messages =
+      (await Message.find({
+        $or: [
+          { sender: senderId, receiver: receiverId },
+          { sender: receiverId, receiver: senderId },
+        ],
+      })) || [];
 
     res.status(200).json({
       message: "Messages retrieved successfully",
