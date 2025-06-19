@@ -1,18 +1,30 @@
 import React, { use, useEffect } from "react";
 import photo from "../assets/Steve-jobs.webp";
 import { useState } from "react";
+import { FaCamera } from "react-icons/fa";
+import backend from "../config/api";
+import { useAuth } from "../context/authContext";
+import toast from "react-hot-toast";
+import Loading from "../assets/infinite-spinner.svg";
 
 const Profile = () => {
+  const { setUser, setIsLogin } = useAuth();
   const [data, setData] = useState(
     JSON.parse(sessionStorage.getItem("user")) || {
-      name: "Steve Jobs",
+      fullName: "Steve Jobs",
       email: "email@example.com",
     }
   );
 
-  const handlePhotoChange = () => {
-    // This function can be used to change the profile photo
-    // For now, it just logs a message
+  const [preview, setPreview] = useState("");
+  const [photo, setPhoto] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const handlePhotoChange = (e) => {
+    const fileURL = URL.createObjectURL(e.target.files[0]);
+    setPreview(fileURL);
+    setPhoto(e.target.files[0]);
     console.log("Change photo button clicked");
   };
 
@@ -21,6 +33,32 @@ const Profile = () => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value })); //...prev thing
   };
+
+  const handelSave = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("name", data.fullName);
+    formData.append("email", data.email);
+    formData.append("photo", photo);
+
+    try {
+      const res = await backend.put("/user/update", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      sessionStorage.setItem("user", JSON.stringify(res.data.user));
+      setUser(res.data.user);
+      setIsLogin(true);
+      toast.success(res.data.message);
+    } catch (error) {
+      toast.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="h-[90vh] p-10 flex items-center justify-center flex-col bg-gray-100">
@@ -28,19 +66,27 @@ const Profile = () => {
           <h1 className="text-4xl font-bold text-[#1A3C5A] text-center mb-2">
             Profile
           </h1>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center relative">
             <img
-              src={data.profilePicture || photo}
+              src={preview || data.profilePicture || photo}
               alt="profilepicture"
               className="w-50 h-50 object-cover border rounded-full"
             />
+            <label className="absolute bottom-3 right-1/4 bg-white border h-10 w-10 p-2 rounded-full flex justify-center items-center hover:bg-[#FF4081] group">
+              <FaCamera className=" text-[#FF4081] group-hover:text-white text-lg" />
+              <input
+                type="file"
+                className="hidden"
+                onChange={handlePhotoChange}
+              />
+            </label>
           </div>
 
           <div className="flex flex-col items-center gap-4">
             <input
               type="text"
-              name="name"
-              value={data.name}
+              name="fullName"
+              value={data.fullName}
               onChange={handleChange}
               className="text-center text-2xl border-b-2 border-gray-300 focus:outline-none focus:border-[#FF4081] bg-transparent"
             />
@@ -57,17 +103,17 @@ const Profile = () => {
           <div className="flex flex-col gap-4">
             <button
               type="button"
-              className="w-full py-3 bg-white border border-[#1A3C5A] text-[#1A3C5A] font-bold rounded-lg hover:bg-[#FF4081] hover:text-white transition-colors duration-200"
-              onClick={handlePhotoChange}
-            >
-              Change Photo
-            </button>
-            <button
-              type="button"
               className="w-full py-3 bg-[#1A3C5A] text-white font-bold rounded-lg hover:bg-[#FF4081] transition-colors duration-200"
-              onClick={() => console.log("Data saved:", data)}
+              onClick={handelSave}
             >
-              Save Data
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <img src={Loading} alt="" className="h-[1em]" />
+                  <span>Saving ...</span>
+                </div>
+              ) : (
+                "Save Changes"
+              )}
             </button>
           </div>
         </div>
