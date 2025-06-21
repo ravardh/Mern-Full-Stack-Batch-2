@@ -5,6 +5,9 @@ import morgan from "morgan";
 import connectDB from "./src/config/db.js";
 import AuthRoutes from "./src/routes/authRoutes.js";
 import UserRoutes from "./src/routes/userRoutes.js";
+import http from "http";
+import { Server } from "socket.io";
+import { webSocket } from "./src/webSocket.js";
 
 const app = express();
 
@@ -32,8 +35,26 @@ app.use((err, req, res, next) => {
   });
 });
 
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173", // Vite
+    methods: ["GET", "POST"],
+  },
+});
+
+webSocket(io)
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
   connectDB();
 });
+
+//
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+//   connectDB();
+// });

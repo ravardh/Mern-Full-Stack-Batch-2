@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import {Toaster} from "react-hot-toast";
+import Test from "./pages/Test";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
+          {/* <Route path="/test" element={<Test />} /> */}
         </Routes>
       </Router>
     </>
